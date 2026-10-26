@@ -2,36 +2,41 @@
 pipeline {
     agent any
 
-    tools {
-        jdk 'JDK-25'
-        maven 'Maven-3.10.0'
+    environment {
+        JAVA_HOME = 'C:\\Program Files\\Java\\jdk-25.0.5.0.3'
+        MAVEN_HOME = 'C:\\Program Files\\apache-maven-3.10.0'
+        PATH = "${JAVA_HOME}\\bin;${MAVEN_HOME}\\bin;${env.PATH}"
     }
 
     stages {
         stage('Checkout') {
             steps {
-                echo 'Checking out Library Management System source code'
+                echo 'Checking out Library Management System'
                 checkout scm
+            }
+        }
+
+        stage('Verify Tools') {
+            steps {
+                bat 'java -version'
+                bat 'mvn -version'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Compiling the project'
                 bat 'mvn clean compile'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running unit tests'
                 bat 'mvn test'
             }
         }
 
         stage('Package') {
             steps {
-                echo 'Packaging the application'
                 bat 'mvn package'
             }
         }
@@ -47,7 +52,7 @@ pipeline {
         }
 
         always {
-            echo 'Jenkins pipeline execution completed'
+            echo 'Pipeline execution completed'
         }
     }
 }
