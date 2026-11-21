@@ -1,6 +1,6 @@
 # 📚 Library Management System
 
-A web-based Library Management System developed using **Java, Spring Boot, Maven, and Thymeleaf**, with automated build integration using **Jenkins** and containerization using **Docker**.
+A web-based Library Management System developed using **Java, Spring Boot, Maven, and Thymeleaf**, with automated build integration using **Jenkins** and containerization using **Docker and Docker Compose**.
 
 ## 🚀 Project Overview
 
@@ -18,6 +18,7 @@ The Library Management System provides a web-based platform for managing library
 | HTML & CSS | User interface |
 | Jenkins | CI/CD automation |
 | Docker | Application containerization |
+| Docker Compose | Container management and deployment |
 | Git & GitHub | Version control |
 
 ## ✨ Key Features
@@ -30,6 +31,7 @@ The Library Management System provides a web-based platform for managing library
 - Jenkins CI/CD pipeline
 - Docker image creation
 - Docker container execution
+- Docker Compose deployment
 
 ## 📂 Project Structure
 
@@ -40,13 +42,19 @@ LibraryManagementSystem/
 │   ├── main/
 │   │   ├── java/
 │   │   │   └── com/library/
+│   │   │       ├── controller/
+│   │   │       ├── model/
+│   │   │       └── service/
+│   │   │
 │   │   └── resources/
 │   │       ├── templates/
 │   │       └── static/
+│   │           └── css/
 │   │
 │   └── test/
 │
 ├── Dockerfile
+├── docker-compose.yml
 ├── Jenkinsfile
 ├── pom.xml
 └── README.md
@@ -56,11 +64,12 @@ LibraryManagementSystem/
 
 Install the following software:
 
-- JDK 17 or later
+- JDK 17
 - Apache Maven
 - Docker Desktop
 - Jenkins
 - Git
+- Visual Studio Code (optional)
 
 ## 💻 Run Locally
 
@@ -88,7 +97,7 @@ mvn clean package
 mvn spring-boot:run
 ```
 
-Open your browser:
+**Step 5: Access the application**
 
 http://localhost:8081
 
@@ -124,6 +133,48 @@ docker ps
 
 http://localhost:8082
 
+## 🐳 Docker Compose Deployment
+
+Docker Compose is used to manage and deploy the Library Management System container.
+
+**Step 1: Start Docker Desktop**
+
+Make sure Docker Desktop is running.
+
+**Step 2: Navigate to the project directory**
+
+```bash
+cd LibraryManagementSystem
+```
+
+**Step 3: Start the application using Docker Compose**
+
+```bash
+docker compose up -d
+```
+
+**Step 4: Verify container status**
+
+```bash
+docker compose ps
+```
+
+**Step 5: Access the application**
+
+http://localhost:8082
+
+**Step 6: View application logs**
+
+```bash
+docker compose logs
+```
+
+**Step 7: Stop the application**
+
+```bash
+docker compose down
+```
+
 ## 🔄 Jenkins CI/CD Integration
 
 Jenkins is used to automate the project build and testing process.
@@ -136,21 +187,31 @@ Pipeline workflow:
 4. Maven Package
 5. Build Verification
 
+Jenkins Dashboard:
+
+http://localhost:8080
+
 ## 🌐 Application URLs
 
 | Service | URL |
 |---|---|
 | Jenkins | http://localhost:8080 |
 | Local Spring Boot Application | http://localhost:8081 |
-| Docker Application | http://localhost:8082 |
+| Docker Compose Application | http://localhost:8082 |
 
-## 📦 Docker Image
+## 📦 Docker Image Details
 
 ```text
 Image Name: library-management-system
 Tag: 1.0
 Container Name: library-management-container
+Container Port: 8080
+Host Port: 8082
 ```
+
+## 🔗 GitHub Repository
+
+[Library Management System - GitHub](https://github.com/pujarivamshikrishna14-pvk/LibraryManagementSystem)
 
 ## 👨‍💻 Author
 
